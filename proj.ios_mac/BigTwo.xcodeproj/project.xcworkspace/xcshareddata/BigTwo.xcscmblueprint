@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "50D59D562F73195D8C2945C3665F279A3DDB75A1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "35432FCC4FE35B001A35C03B4F7F594D3037629C" : 0,
+    "50D59D562F73195D8C2945C3665F279A3DDB75A1" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1BFDB913-F11B-47EC-8E9B-1D46DF33AC0D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "35432FCC4FE35B001A35C03B4F7F594D3037629C" : "..",
+    "50D59D562F73195D8C2945C3665F279A3DDB75A1" : "BigTwo\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BigTwo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "proj.ios_mac\/BigTwo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/keltonxian\/cocos2d-x-3.2-pak.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "35432FCC4FE35B001A35C03B4F7F594D3037629C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/keltonxian\/BigTwo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "50D59D562F73195D8C2945C3665F279A3DDB75A1"
+    }
+  ]
+}

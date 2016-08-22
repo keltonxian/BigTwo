@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "MainScene.h"
 
 USING_NS_CC;
 
@@ -20,7 +20,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLView::create("My Game");
+        glview = GLView::create("Big Two");
         director->setOpenGLView(glview);
     }
 
@@ -29,14 +29,33 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
+    
+    this->setResolution();
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = MainScene::createScene();
 
     // run
     director->runWithScene(scene);
 
     return true;
+}
+
+void AppDelegate::setResolution()
+{
+    auto director = Director::getInstance();
+    auto glview = director->getOpenGLView();
+    Size frameSize = glview->getFrameSize();
+    glview->setDesignResolutionSize(1280, 850, ResolutionPolicy::FIXED_HEIGHT);
+    
+    auto vsize = director->getVisibleSize();
+    FULL_WIDTH  = vsize.width;
+    FULL_HEIGHT = vsize.height;
+    HALF_WIDTH  = floor(FULL_WIDTH/2);
+    HALF_HEIGHT = floor(FULL_HEIGHT/2);
+    SCALE_X = FULL_WIDTH / 1280;
+    SCALE_Y = FULL_HEIGHT / 800;
+    CCLOG("width[%d]height[%d]half_width[%d]half_height[%d]",FULL_WIDTH,FULL_HEIGHT,HALF_WIDTH,HALF_HEIGHT);
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
