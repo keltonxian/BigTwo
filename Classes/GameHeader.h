@@ -11,6 +11,10 @@
 
 #include "KHeader.h"
 
+//Game Center
+#define IOS_KEY_RANK_POINT     "com.kwork.bigtwo.pointrank"
+#define IOS_KEY_RANK_HUNDRED   "com.kwork.bigtwo.hundredrank"
+
 #define SAVE_DATA_1      "bigtwo1.kx"
 
 #define F_BG             "image/bg/"

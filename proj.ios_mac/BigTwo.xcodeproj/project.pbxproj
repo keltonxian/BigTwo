@@ -46,6 +46,10 @@
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
+		D5015FBC1D72B68E002E4BE7 /* GameCenterHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D5015FB91D72B68E002E4BE7 /* GameCenterHandler.m */; };
+		D5015FBD1D72B68E002E4BE7 /* GameCenterHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D5015FB91D72B68E002E4BE7 /* GameCenterHandler.m */; };
+		D5015FBE1D72B68E002E4BE7 /* IOSTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D5015FBB1D72B68E002E4BE7 /* IOSTool.m */; };
+		D5015FBF1D72B68E002E4BE7 /* IOSTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D5015FBB1D72B68E002E4BE7 /* IOSTool.m */; };
 		D506C62E1D55A430004B0618 /* libbox2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D506C61F1D55A30D004B0618 /* libbox2d iOS.a */; };
 		D506C62F1D55A437004B0618 /* libchipmunk iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D506C61D1D55A30D004B0618 /* libchipmunk iOS.a */; };
 		D506C6301D55A43B004B0618 /* libcocos2dx iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D506C6191D55A30D004B0618 /* libcocos2dx iOS.a */; };
@@ -232,6 +236,10 @@
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D5015FB81D72B68E002E4BE7 /* GameCenterHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterHandler.h; sourceTree = "<group>"; };
+		D5015FB91D72B68E002E4BE7 /* GameCenterHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterHandler.m; sourceTree = "<group>"; };
+		D5015FBA1D72B68E002E4BE7 /* IOSTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSTool.h; sourceTree = "<group>"; };
+		D5015FBB1D72B68E002E4BE7 /* IOSTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSTool.m; sourceTree = "<group>"; };
 		D506C5FF1D55A30D004B0618 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../../../build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		D56E8C401D56EC3200546523 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
 		D56E8C471D56EEF100546523 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "BigTwo iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
@@ -450,6 +458,17 @@
 			path = ../Resources;
 			sourceTree = "<group>";
 		};
+		D5015FB71D72B68E002E4BE7 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				D5015FB81D72B68E002E4BE7 /* GameCenterHandler.h */,
+				D5015FB91D72B68E002E4BE7 /* GameCenterHandler.m */,
+				D5015FBA1D72B68E002E4BE7 /* IOSTool.h */,
+				D5015FBB1D72B68E002E4BE7 /* IOSTool.m */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
 		D506C6001D55A30D004B0618 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +511,7 @@
 				D5ED89C71D58C4BB004AB3F9 /* KUtil.h */,
 				D5ED89C81D58C4BB004AB3F9 /* KUtilIOS.h */,
 				D5ED89C91D58C4BB004AB3F9 /* KUtilIOS.mm */,
+				D5015FB71D72B68E002E4BE7 /* ios */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -699,6 +719,7 @@
 				D5ED89E21D58C619004AB3F9 /* Ai.cpp in Sources */,
 				D5ED89E81D58C619004AB3F9 /* Poker.cpp in Sources */,
 				D5ED89E41D58C619004AB3F9 /* MainScene.cpp in Sources */,
+				D5015FBC1D72B68E002E4BE7 /* GameCenterHandler.m in Sources */,
 				D5ED89E61D58C619004AB3F9 /* Player.cpp in Sources */,
 				D5ED89EA1D58C619004AB3F9 /* SceneBigTwo.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
@@ -706,6 +727,7 @@
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				D5ED89CC1D58C4BB004AB3F9 /* KUtilIOS.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				D5015FBE1D72B68E002E4BE7 /* IOSTool.m in Sources */,
 				D5ED89CA1D58C4BB004AB3F9 /* KUtil.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -717,9 +739,11 @@
 				D5ED89E31D58C619004AB3F9 /* Ai.cpp in Sources */,
 				D5ED89E71D58C619004AB3F9 /* Player.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
+				D5015FBD1D72B68E002E4BE7 /* GameCenterHandler.m in Sources */,
 				D5BF50231D60B5ED00A8A848 /* GameTool.cpp in Sources */,
 				D5ED89E91D58C619004AB3F9 /* Poker.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				D5015FBF1D72B68E002E4BE7 /* IOSTool.m in Sources */,
 				D5ED89EB1D58C619004AB3F9 /* SceneBigTwo.cpp in Sources */,
 				D5ED89CD1D58C4BB004AB3F9 /* KUtilIOS.mm in Sources */,
 				D5ED89CB1D58C4BB004AB3F9 /* KUtil.cpp in Sources */,
@@ -787,7 +811,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.cocos2dx.hellocpp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kwork.bigtwo;
 				PRODUCT_NAME = "BigTwo iOS";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -822,7 +846,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.cocos2dx.hellocpp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kwork.bigtwo;
 				PRODUCT_NAME = "BigTwo iOS";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

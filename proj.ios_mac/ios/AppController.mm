@@ -27,6 +27,7 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "KUtilIOS.h"
 
 @implementation AppController
 
@@ -72,6 +73,8 @@ static AppDelegate s_sharedApplication;
     [window makeKeyAndVisible];
 
     [[UIApplication sharedApplication] setStatusBarHidden:true];
+    
+    KUtilIOS::loginGameCenter();
 
     // IMPORTANT: Setting the GLView should be done after creating the RootViewController
     cocos2d::GLView *glview = cocos2d::GLView::createWithEAGLView(eaglView);
@@ -81,7 +84,6 @@ static AppDelegate s_sharedApplication;
 
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
