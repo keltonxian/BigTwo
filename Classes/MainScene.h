@@ -34,10 +34,11 @@ public:
     CREATE_FUNC(MainScene);
 private:
     Vector<GameKind *> listGameKind;
-    int point;
-    int hundredWinCount;
+    int _normalMatchScore;
+    int _hundredMatchScore;
     int cellWidth;
     int cellHeight;
+    void addPlayer(const char *altas, int iconIndex, int objIndex);
     void initPlayerData();
     void initMyData();
     virtual void onEnter() override;

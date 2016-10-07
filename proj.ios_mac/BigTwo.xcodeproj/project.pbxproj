@@ -57,9 +57,14 @@
 		D506C6321D55A443004B0618 /* libCocosDenshion iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D506C6211D55A30D004B0618 /* libCocosDenshion iOS.a */; };
 		D56E8C411D56EC3200546523 /* font in Resources */ = {isa = PBXBuildFile; fileRef = D56E8C401D56EC3200546523 /* font */; };
 		D56E8C421D56EC3200546523 /* font in Resources */ = {isa = PBXBuildFile; fileRef = D56E8C401D56EC3200546523 /* font */; };
-		D56E8C481D56EEF100546523 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D56E8C471D56EEF100546523 /* Images.xcassets */; };
-		D56E8C5C1D56F07600546523 /* image in Resources */ = {isa = PBXBuildFile; fileRef = D56E8C5B1D56F07600546523 /* image */; };
-		D56E8C5D1D56F07600546523 /* image in Resources */ = {isa = PBXBuildFile; fileRef = D56E8C5B1D56F07600546523 /* image */; };
+		D5A55A171D731E8D00E8E9B3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5A55A161D731E8D00E8E9B3 /* CoreData.framework */; };
+		D5A55A941D7321C700E8E9B3 /* GameData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5A55A921D7321C700E8E9B3 /* GameData.xcdatamodeld */; };
+		D5A55A951D7321C700E8E9B3 /* GameData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5A55A921D7321C700E8E9B3 /* GameData.xcdatamodeld */; };
+		D5A55ABD1D73388000E8E9B3 /* CoreDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A55ABC1D73388000E8E9B3 /* CoreDataHandler.m */; };
+		D5A55ABE1D73388000E8E9B3 /* CoreDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D5A55ABC1D73388000E8E9B3 /* CoreDataHandler.m */; };
+		D5B58A2D1DA6B46A0015903F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B58A2C1DA6B46A0015903F /* Images.xcassets */; };
+		D5B58A2F1DA6B6010015903F /* image in Resources */ = {isa = PBXBuildFile; fileRef = D5B58A2E1DA6B6010015903F /* image */; };
+		D5B58A301DA6B6010015903F /* image in Resources */ = {isa = PBXBuildFile; fileRef = D5B58A2E1DA6B6010015903F /* image */; };
 		D5BA7B491D69FFF400CF9033 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5BA7B481D69FFF400CF9033 /* CoreMotion.framework */; };
 		D5BA7B521D6A000300CF9033 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5BA7B511D6A000300CF9033 /* GameKit.framework */; };
 		D5BA7B541D6A001E00CF9033 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5BA7B531D6A001E00CF9033 /* OpenGLES.framework */; };
@@ -242,8 +247,12 @@
 		D5015FBB1D72B68E002E4BE7 /* IOSTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSTool.m; sourceTree = "<group>"; };
 		D506C5FF1D55A30D004B0618 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../../../build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		D56E8C401D56EC3200546523 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
-		D56E8C471D56EEF100546523 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "BigTwo iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
-		D56E8C5B1D56F07600546523 /* image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = image; sourceTree = "<group>"; };
+		D5A55A161D731E8D00E8E9B3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		D5A55A931D7321C700E8E9B3 /* GameData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameData.xcdatamodel; sourceTree = "<group>"; };
+		D5A55ABC1D73388000E8E9B3 /* CoreDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHandler.m; sourceTree = "<group>"; };
+		D5A55AC01D7338D700E8E9B3 /* CoreDataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHandler.h; sourceTree = "<group>"; };
+		D5B58A2C1DA6B46A0015903F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "BigTwo iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		D5B58A2E1DA6B6010015903F /* image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = image; sourceTree = "<group>"; };
 		D5BA7B481D69FFF400CF9033 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		D5BA7B511D6A000300CF9033 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
 		D5BA7B531D6A001E00CF9033 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
@@ -276,6 +285,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5A55A171D731E8D00E8E9B3 /* CoreData.framework in Frameworks */,
 				D5BA7B581D6A003F00CF9033 /* libz.tbd in Frameworks */,
 				D5BA7B561D6A002A00CF9033 /* UIKit.framework in Frameworks */,
 				D5BA7B541D6A001E00CF9033 /* OpenGLES.framework in Frameworks */,
@@ -382,6 +392,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D5A55A161D731E8D00E8E9B3 /* CoreData.framework */,
 				D5BA7B571D6A003F00CF9033 /* libz.tbd */,
 				D5BA7B551D6A002A00CF9033 /* UIKit.framework */,
 				D5BA7B531D6A001E00CF9033 /* OpenGLES.framework */,
@@ -398,6 +409,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				D44C620B132DFF330009C878 /* OpenAL.framework */,
 				BF1C47EA1293683800B63C5D /* QuartzCore.framework */,
+				D5A55A921D7321C700E8E9B3 /* GameData.xcdatamodeld */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -450,8 +462,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D56E8C5B1D56F07600546523 /* image */,
-				D56E8C471D56EEF100546523 /* Images.xcassets */,
+				D5B58A2C1DA6B46A0015903F /* Images.xcassets */,
+				D5B58A2E1DA6B6010015903F /* image */,
 				D56E8C401D56EC3200546523 /* font */,
 			);
 			name = Resources;
@@ -465,6 +477,8 @@
 				D5015FB91D72B68E002E4BE7 /* GameCenterHandler.m */,
 				D5015FBA1D72B68E002E4BE7 /* IOSTool.h */,
 				D5015FBB1D72B68E002E4BE7 /* IOSTool.m */,
+				D5A55ABC1D73388000E8E9B3 /* CoreDataHandler.m */,
+				D5A55AC01D7338D700E8E9B3 /* CoreDataHandler.h */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -564,7 +578,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = B4XMEVFB5D;
@@ -676,6 +690,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				D5B58A2D1DA6B46A0015903F /* Images.xcassets in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -683,13 +698,12 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				D56E8C411D56EC3200546523 /* font in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
-				D56E8C481D56EEF100546523 /* Images.xcassets in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
-				D56E8C5C1D56F07600546523 /* image in Resources */,
+				D5B58A2F1DA6B6010015903F /* image in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
@@ -701,7 +715,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D56E8C5D1D56F07600546523 /* image in Resources */,
+				D5B58A301DA6B6010015903F /* image in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				D56E8C421D56EC3200546523 /* font in Resources */,
 			);
@@ -715,6 +729,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5BF50221D60B5ED00A8A848 /* GameTool.cpp in Sources */,
+				D5A55A941D7321C700E8E9B3 /* GameData.xcdatamodeld in Sources */,
 				D5ED89EC1D58C619004AB3F9 /* SceneRule.cpp in Sources */,
 				D5ED89E21D58C619004AB3F9 /* Ai.cpp in Sources */,
 				D5ED89E81D58C619004AB3F9 /* Poker.cpp in Sources */,
@@ -723,6 +738,7 @@
 				D5ED89E61D58C619004AB3F9 /* Player.cpp in Sources */,
 				D5ED89EA1D58C619004AB3F9 /* SceneBigTwo.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				D5A55ABD1D73388000E8E9B3 /* CoreDataHandler.m in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				D5ED89CC1D58C4BB004AB3F9 /* KUtilIOS.mm in Sources */,
@@ -740,11 +756,13 @@
 				D5ED89E71D58C619004AB3F9 /* Player.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
 				D5015FBD1D72B68E002E4BE7 /* GameCenterHandler.m in Sources */,
+				D5A55ABE1D73388000E8E9B3 /* CoreDataHandler.m in Sources */,
 				D5BF50231D60B5ED00A8A848 /* GameTool.cpp in Sources */,
 				D5ED89E91D58C619004AB3F9 /* Poker.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				D5015FBF1D72B68E002E4BE7 /* IOSTool.m in Sources */,
 				D5ED89EB1D58C619004AB3F9 /* SceneBigTwo.cpp in Sources */,
+				D5A55A951D7321C700E8E9B3 /* GameData.xcdatamodeld in Sources */,
 				D5ED89CD1D58C4BB004AB3F9 /* KUtilIOS.mm in Sources */,
 				D5ED89CB1D58C4BB004AB3F9 /* KUtil.cpp in Sources */,
 				D5ED89ED1D58C619004AB3F9 /* SceneRule.cpp in Sources */,
@@ -791,6 +809,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -809,7 +828,7 @@
 					"$(SRCROOT)/../../../cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kwork.bigtwo;
 				PRODUCT_NAME = "BigTwo iOS";
@@ -828,6 +847,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
@@ -844,7 +864,7 @@
 					"$(SRCROOT)/../../../cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kwork.bigtwo;
 				PRODUCT_NAME = "BigTwo iOS";
@@ -918,12 +938,28 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../",
@@ -950,9 +986,25 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../",
@@ -1008,6 +1060,19 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D5A55A921D7321C700E8E9B3 /* GameData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D5A55A931D7321C700E8E9B3 /* GameData.xcdatamodel */,
+			);
+			currentVersion = D5A55A931D7321C700E8E9B3 /* GameData.xcdatamodel */;
+			path = GameData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
 }

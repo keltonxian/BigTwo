@@ -15,10 +15,10 @@
 #import "KUtilIOS.h"
 #endif
 
-#define SIDE_DOWN      1
-#define SIDE_RIGHT     2
-#define SIDE_UP        3
-#define SIDE_LEFT      4
+#define SIDE_DOWN      0
+#define SIDE_RIGHT     1
+#define SIDE_UP        2
+#define SIDE_LEFT      3
 #define POKER_ZORDER_NORMAL   100
 #define Y_DOWN_CARD_UNPRESS   140
 #define Y_DOWN_CARD_PRESS     200
@@ -217,7 +217,7 @@ void SceneBigTwo::addPlayer(Player *player)
 {
     playerList.pushBack(player);
     Point position;
-    if (player->getIcon() < 1 || player->getIcon() > 5) {
+    if (player->getIcon() < 0 || player->getIcon() > 3) {
         CCLOG("ERROR DouDiZhu::addPlayer iconType icon(%d)", player->getIcon());
         return;
     }
@@ -259,6 +259,24 @@ void SceneBigTwo::addPlayer(Player *player)
 
 Player* SceneBigTwo::loadPlayerById(int pid, int side)
 {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    std::string atlas = KUtilIOS::getStringValueByKey("Player", "atlas", "路人", pid);
+    int iconIndex = KUtilIOS::getIntValueByKey("Player", "icon", 0, pid);
+    int score = 0;
+    int matchWinCount = 0;
+    int matchCount = 0;
+    if (_gameType == BIGTWO_TYPE_POINT) {
+        score = KUtilIOS::getIntValueByKey("Player", "normal_match_score", 0, pid);
+        matchWinCount = KUtilIOS::getIntValueByKey("Player", "normal_match_win_count", 0, pid);
+        matchCount = KUtilIOS::getIntValueByKey("Player", "normal_match_count", 0, pid);
+    } else if (_gameType == BIGTWO_TYPE_100) {
+        score = KUtilIOS::getIntValueByKey("Player", "hundred_match_score", 0, pid);
+        matchWinCount = KUtilIOS::getIntValueByKey("Player", "hundred_match_win_count", 0, pid);
+        matchCount = KUtilIOS::getIntValueByKey("Player", "hundred_match_count", 0, pid);
+    }
+    auto player = Player::createPlayer(pid, atlas, iconIndex, (side==SIDE_DOWN)?false:true, score, matchWinCount, matchCount, side);
+    return player;
+#else
     auto path = FileUtils::getInstance()->getWritablePath() + SAVE_DATA_1;
     ValueMap saveData = FileUtils::getInstance()->getValueMapFromFile(path);
     if (0 == saveData.size()) {
@@ -300,14 +318,22 @@ Player* SceneBigTwo::loadPlayerById(int pid, int side)
         return player;
     }
     return Player::createPlayer(pid, side, name, icon, (side==SIDE_DOWN)?false:true, 0);
+#endif
 }
 
 void SceneBigTwo::initPlayer()
 {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    addPlayer(loadPlayerById(0, SIDE_DOWN));
+    addPlayer(loadPlayerById(1, SIDE_RIGHT));
+    addPlayer(loadPlayerById(2, SIDE_LEFT));
+    addPlayer(loadPlayerById(3, SIDE_UP));
+#else
     addPlayer(loadPlayerById(10001, SIDE_DOWN));
     addPlayer(loadPlayerById(10002, SIDE_RIGHT));
     addPlayer(loadPlayerById(10003, SIDE_LEFT));
     addPlayer(loadPlayerById(10004, SIDE_UP));
+#endif
 }
 
 Player* SceneBigTwo::getPlayer(int side)
@@ -363,16 +389,16 @@ void SceneBigTwo::updatePlayerCoin()
 {
     char numStr[50] = {0};
     memset(numStr, 0, 50);
-    sprintf(numStr, "%d", getPlayer(SIDE_LEFT)->getPoint());
+    sprintf(numStr, "%d", getPlayer(SIDE_LEFT)->getScore());
     coinLeft->setString(numStr);
     memset(numStr, 0, 50);
-    sprintf(numStr, "%d", getPlayer(SIDE_RIGHT)->getPoint());
+    sprintf(numStr, "%d", getPlayer(SIDE_RIGHT)->getScore());
     coinRight->setString(numStr);
     memset(numStr, 0, 50);
-    sprintf(numStr, "%d", getPlayer(SIDE_DOWN)->getPoint());
+    sprintf(numStr, "%d", getPlayer(SIDE_DOWN)->getScore());
     coinDown->setString(numStr);
     memset(numStr, 0, 50);
-    sprintf(numStr, "%d", getPlayer(SIDE_UP)->getPoint());
+    sprintf(numStr, "%d", getPlayer(SIDE_UP)->getScore());
     coinUp->setString(numStr);
 }
 
@@ -639,54 +665,55 @@ bool SceneBigTwo::checkGameOver()
 
 void SceneBigTwo::showResult(float delta)
 {
+    Player *playerWin = nullptr;
     if (_gameType == BIGTWO_TYPE_POINT) {
-        int point = 0;
-        int winSide = 0;
+        int score = 0;
         for (int i = 0; i < playerList.size(); i++) {
             auto player = playerList.at(i);
+            player->setMatchCount(player->getMatchCount() + 1);
             auto list = player->getPokerList();
             size_t size = list->size();
             if (0 == size) {
-                winSide = player->getSide();
+                playerWin = player;
                 continue;
             }
-            player->addPoint(0);
+            player->addScore(0);
             //余牌数小于8张，每张1分
             //余牌数8，9张，每张2分
             //余牌数10~12张，每张3分
             //余牌数13张，每张4分
             if (size < 8) {
-                point += size * 1;
+                score += size * 1;
             } else if (size < 10) {
-                point += size * 2;
+                score += size * 2;
             } else if (size < 13) {
-                point += size * 3;
+                score += size * 3;
             } else if (size == 13) {
-                point += size * 4;
+                score += size * 4;
             }
         }
-        auto player = getPlayer(winSide);
-        player->addPoint(point);
+        playerWin->setMatchWinCount(playerWin->getMatchWinCount() + 1);
+        playerWin->addScore(score);
         auto layer = ResultLayer::create();
-        layer->setData(point, winSide, playerList, CC_CALLBACK_1(SceneBigTwo::callbackResult, this));
+        layer->setData(score, playerWin, playerList, CC_CALLBACK_1(SceneBigTwo::callbackResult, this));
         KUtil::addLayer(layer, 20, 0);
         
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
-        if (winSide == SIDE_DOWN) {
-            KUtilIOS::insertRank(IOS_KEY_RANK_POINT, getPlayer(SIDE_DOWN)->getPoint());
+        if (playerWin->getSide() == SIDE_DOWN) {
+            KUtilIOS::insertRank(IOS_KEY_RANK_POINT, getPlayer(SIDE_DOWN)->getScore());
         }
 #endif
     } else if (_gameType == BIGTWO_TYPE_100) {
-        int winSide = 0;
-        int sideGet100 = -1;
+        Player *playerReachHundred = nullptr;
         for (int i = 0; i < playerList.size(); i++) {
-            int point = 0;
+            int score = 0;
             auto player = playerList.at(i);
+            player->setMatchCount(player->getMatchCount() + 1);
             auto list = player->getPokerList();
             size_t size = list->size();
             if (0 == size) {
-                player->addPoint(0);
-                winSide = player->getSide();
+                player->addScore(0);
+                playerWin = player;
                 continue;
             }
             //余牌数小于8张，每张1分
@@ -694,41 +721,42 @@ void SceneBigTwo::showResult(float delta)
             //余牌数10~12张，每张3分
             //余牌数13张，每张4分
             if (size < 8) {
-                point += size * 1;
+                score += size * 1;
             } else if (size < 10) {
-                point += size * 2;
+                score += size * 2;
             } else if (size < 13) {
-                point += size * 3;
+                score += size * 3;
             } else if (size == 13) {
-                point += size * 4;
+                score += size * 4;
             }
-            player->addPoint(point);
-            if (player->getPoint() >= 100) {
-                sideGet100 = player->getSide();
+            player->addScore(score);
+            if (player->getScore() >= 100) {
+                playerReachHundred = player;
             }
         }
-        int endWinSide = -1;
+        playerWin->setMatchWinCount(playerWin->getMatchWinCount() + 1);
+        Player *playerWinFinal = nullptr;
         int pMark = -1;
-        if (-1 != sideGet100) {
+        if (nullptr != playerReachHundred) {
             for (int i = 0; i < playerList.size(); i++) {
                 auto player = playerList.at(i);
-                if (-1 == pMark || player->getPoint() < pMark) {
-                    pMark = player->getPoint();
-                    endWinSide = player->getSide();
+                if (-1 == pMark || player->getScore() < pMark) {
+                    pMark = player->getScore();
+                    playerWinFinal = player;
                 }
-                player->setPoint(0);
-                if (player->getSide() == sideGet100) {
+                player->setScore(0);
+                if (player == playerReachHundred) {
                     continue;
                 }
-                player->point3 += 1;
+                player->setMatchWinCount(player->getMatchWinCount()+1);
             }
         }
         auto layer = ResultLayer::create();
-        layer->setDataHundred(sideGet100, endWinSide, winSide, playerList, CC_CALLBACK_1(SceneBigTwo::callbackResult, this));
+        layer->setDataHundred(playerReachHundred, playerWinFinal, playerWin, playerList, CC_CALLBACK_1(SceneBigTwo::callbackResult, this));
         KUtil::addLayer(layer, 20, 0);
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
-        if (-1 != sideGet100 && winSide == SIDE_DOWN) {
-            KUtilIOS::insertRank(IOS_KEY_RANK_HUNDRED, getPlayer(SIDE_DOWN)->getHundredWinCount()+1);
+        if (nullptr != playerReachHundred && playerWin->getSide() == SIDE_DOWN) {
+            KUtilIOS::insertRank(IOS_KEY_RANK_HUNDRED, getPlayer(SIDE_DOWN)->getMatchWinCount());
         }
 #endif
     }
@@ -1239,6 +1267,25 @@ float SceneBigTwo::sortPokerSprite(Player *player, float delay, bool callLogic)
 
 void SceneBigTwo::saveGame()
 {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    for (int i = 0; i < playerList.size(); i++) {
+        auto player = playerList.at(i);
+        int pid = player->getPid();
+//        int side = player->getSide();
+        int score = player->getScore();
+        int matchWinCount = player->getMatchWinCount();
+        int matchCount = player->getMatchCount();
+        if (_gameType == BIGTWO_TYPE_POINT) {
+            KUtilIOS::saveIntValueByKey("Player", "normal_match_score", score, pid);
+            KUtilIOS::saveIntValueByKey("Player", "normal_match_win_count", matchWinCount, pid);
+            KUtilIOS::saveIntValueByKey("Player", "normal_match_count", matchCount, pid);
+        } else if (_gameType == BIGTWO_TYPE_100) {
+            KUtilIOS::saveIntValueByKey("Player", "hundred_match_score", score, pid);
+            KUtilIOS::saveIntValueByKey("Player", "hundred_match_win_count", matchWinCount, pid);
+            KUtilIOS::saveIntValueByKey("Player", "hundred_match_count", matchCount, pid);
+        }
+    }
+#else
     int winCount = 0;
     int loseCount = 0;
     auto path = FileUtils::getInstance()->getWritablePath() + SAVE_DATA_1;
@@ -1290,6 +1337,7 @@ void SceneBigTwo::saveGame()
     
     //    auto path = FileUtils::getInstance()->getWritablePath() + SAVE_DATA_1;
     FileUtils::getInstance()->writeToFile(saveData, path);
+#endif
 }
 
 bool SceneBigTwo::loadGame()
@@ -1318,12 +1366,13 @@ bool ResultLayer::init()
     return true;
 }
 
-void ResultLayer::setData(int coin, int winSide, Vector<Player *> playerList, const ccMenuCallback& callback)
+void ResultLayer::setData(int coin, Player *playerWin, Vector<Player *> playerList, const ccMenuCallback& callback)
 {
+    int playerWinSide = playerWin->getSide();
     _callback = callback;
     for (int i = 0; i < playerList.size(); i++) {
         auto player = playerList.at(i);
-        if (player->getIcon() < 1 || player->getIcon() > 5) {
+        if (player->getIcon() < 0 || player->getIcon() > 3) {
             CCLOG("ERROR DouDiZhu::addPlayer iconType icon(%d)", player->getIcon());
             continue;
         }
@@ -1339,7 +1388,7 @@ void ResultLayer::setData(int coin, int winSide, Vector<Player *> playerList, co
         Color4B color;
         char winStr[50] = {0};
         memset(winStr, 0, 50);
-        if (winSide == player->getSide()) {
+        if (playerWinSide == player->getSide()) {
             sprintf(winStr, "%s", "胜利!!!");
             color = Color4B(0, 255, 0, 255);
         } else {
@@ -1354,14 +1403,17 @@ void ResultLayer::setData(int coin, int winSide, Vector<Player *> playerList, co
         
         char numStr[50] = {0};
         memset(numStr, 0, 50);
-        sprintf(numStr, "+%d", player->getPointChanged());
+        sprintf(numStr, "+%d", player->getScoreChanged());
         color = Color4B(255, 255, 0, 255);
         GameTool::addLabelOutlineDefault(frame, numStr, 50, Point(540, 0), color, Color4B(255, 255, 255, 255), 2, ANCHOR_LEFT_DOWN, 10);
     }
 }
 
-void ResultLayer::setDataHundred(int side100, int endWinSide, int winSide, Vector<Player *> playerList, const ccMenuCallback& callback)
+void ResultLayer::setDataHundred(Player *playerReachHundred, Player *playerWinFinal, Player *playerWin, Vector<Player *> playerList, const ccMenuCallback& callback)
 {
+    int playerReachHundredSide = playerReachHundred->getSide();
+    int playerWinFinalSide = playerWinFinal->getSide();
+    int playerWinSide = playerWin->getSide();
     _callback = callback;
     for (int i = 0; i < playerList.size(); i++) {
         auto player = playerList.at(i);
@@ -1381,10 +1433,10 @@ void ResultLayer::setDataHundred(int side100, int endWinSide, int winSide, Vecto
         Color4B color;
         char winStr[50] = {0};
         memset(winStr, 0, 50);
-        if (side100 == player->getSide()) {
+        if (playerReachHundredSide == player->getSide()) {
             sprintf(winStr, "%s", "破百啦!!!");
             color = Color4B(250, 0, 0, 255);
-        } else if (winSide == player->getSide()) {
+        } else if (playerWinSide == player->getSide()) {
             sprintf(winStr, "%s", "胜利!!!");
             color = Color4B(0, 255, 0, 255);
         } else {
@@ -1399,11 +1451,11 @@ void ResultLayer::setDataHundred(int side100, int endWinSide, int winSide, Vecto
         
         char numStr[50] = {0};
         memset(numStr, 0, 50);
-        sprintf(numStr, "+%d", player->getPointChanged());
+        sprintf(numStr, "+%d", player->getScoreChanged());
         color = Color4B(255, 255, 0, 255);
         GameTool::addLabelOutlineDefault(frame, numStr, 50, Point(540, 0), color, Color4B(255, 255, 255, 255), 2, ANCHOR_LEFT_DOWN, 10);
         
-        if (endWinSide == player->getSide()) {
+        if (playerWinFinalSide == player->getSide()) {
             char endWinStr[50] = {0};
             memset(endWinStr, 0, 50);
             sprintf(endWinStr, "%s", "最终胜利者!!!");

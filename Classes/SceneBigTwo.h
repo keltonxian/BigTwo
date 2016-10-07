@@ -136,8 +136,8 @@ class ResultLayer : public Layer {
 public:
     virtual bool init() override;
     CREATE_FUNC(ResultLayer);
-    void setData(int coin, int winSide, Vector<Player *> playerList, const ccMenuCallback& callback);
-    void setDataHundred(int side100, int endWinSide, int winSide, Vector<Player *> playerList, const ccMenuCallback& callback);
+    void setData(int coin, Player *playerWin, Vector<Player *> playerList, const ccMenuCallback& callback);
+    void setDataHundred(Player *playerReachHundred, Player *playerWinFinal, Player *playerWin, Vector<Player *> playerList, const ccMenuCallback& callback);
 private:
     ccMenuCallback _callback;
     void callbackNext(cocos2d::Ref* pSender);

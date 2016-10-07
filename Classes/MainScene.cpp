@@ -40,14 +40,14 @@ bool MainScene::init()
     
     KUtil::addMenu(this, &itemArray, 30);
     
-    point = 0;
-    hundredWinCount = 0;
+    _normalMatchScore = 0;
+    _hundredMatchScore = 0;
     
     initPlayerData();
     initMyData();
     
-    listGameKind.pushBack(GameKind::create(BIGTWO_TYPE_POINT, "普通赛", "积分", point));
-    listGameKind.pushBack(GameKind::create(BIGTWO_TYPE_100, "冲百赛", "胜利场数", hundredWinCount));
+    listGameKind.pushBack(GameKind::create(BIGTWO_TYPE_POINT, "普通赛", "积分", _normalMatchScore));
+    listGameKind.pushBack(GameKind::create(BIGTWO_TYPE_100, "冲百赛", "胜利场数", _hundredMatchScore));
     
     int tableViewX = 50;
     int tableViewY = 200;
@@ -63,8 +63,30 @@ bool MainScene::init()
     return true;
 }
 
+void MainScene::addPlayer(const char *altas, int iconIndex, int objIndex)
+{
+    bool isPlayerExist = KUtilIOS::checkEntityExistByIndex("Player", objIndex);
+    if (true == isPlayerExist) {
+        return;
+    }
+    KUtilIOS::saveStringValueByKey("Player", "atlas", altas, objIndex);
+    KUtilIOS::saveIntValueByKey("Player", "icon", iconIndex, objIndex);
+    KUtilIOS::saveIntValueByKey("Player", "normal_match_score", 0, objIndex);
+    KUtilIOS::saveIntValueByKey("Player", "normal_match_win_count", 0, objIndex);
+    KUtilIOS::saveIntValueByKey("Player", "normal_match_count", 0, objIndex);
+    KUtilIOS::saveIntValueByKey("Player", "hundred_match_score", 0, objIndex);
+    KUtilIOS::saveIntValueByKey("Player", "hundred_match_win_count", 0, objIndex);
+    KUtilIOS::saveIntValueByKey("Player", "hundred_match_count", 0, objIndex);
+}
+
 void MainScene::initPlayerData()
 {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    addPlayer("潜力股", 0, 0);
+    addPlayer("婕婕姐", 1, 1);
+    addPlayer("冬瓜哥", 2, 2);
+    addPlayer("店小二", 3, 3);
+#else
     auto p = FileUtils::getInstance()->getWritablePath() + SAVE_DATA_1;
     ValueMap sd = FileUtils::getInstance()->getValueMapFromFile(p);
     CCLOG("initPlayerData data size[%zd]", sd.size());
@@ -81,29 +103,45 @@ void MainScene::initPlayerData()
     
     auto path = FileUtils::getInstance()->getWritablePath() + SAVE_DATA_1;
     FileUtils::getInstance()->writeToFile(saveData, path);
+#endif
 }
 
 void MainScene::initMyData()
 {
-    int winCount = 0;
-    int loseCount = 0;
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
+    int winMatchCount = 0;
+    int matchCount = 0;
+    int countWin1 = KUtilIOS::getIntValueByKey("Player", "normal_match_win_count", 0, 0);
+    int countWin2 = KUtilIOS::getIntValueByKey("Player", "hundred_match_win_count", 0, 0);
+    winMatchCount = countWin1 + countWin2;
+    int count1 = KUtilIOS::getIntValueByKey("Player", "normal_match_count", 0, 0);
+    int count2 = KUtilIOS::getIntValueByKey("Player", "hundred_match_count", 0, 0);
+    matchCount = count1 + count2;
+    std::string atlas = KUtilIOS::getStringValueByKey("Player", "atlas", "小赌神", 0);
+    int iconIndex = KUtilIOS::getIntValueByKey("Player", "icon", 0, 0);
+    int normalMatchScore = KUtilIOS::getIntValueByKey("Player", "normal_match_score", 0, 0);
+    int hundredMatchScore = KUtilIOS::getIntValueByKey("Player", "hundred_match_score", 0, 0);
+#else
+    int winMatchCount = 0;
+    int loseMatchCount = 0;
     auto path = FileUtils::getInstance()->getWritablePath() + SAVE_DATA_1;
     ValueMap data = FileUtils::getInstance()->getValueMapFromFile(path);
     ValueMap::iterator iter = data.find("WinCount");
     if (iter != data.end()) {
-        winCount = data.at("WinCount").asInt();
+        winMatchCount = data.at("WinCount").asInt();
     }
     iter = data.find("LoseCount");
     if (iter != data.end()) {
-        loseCount = data.at("LoseCount").asInt();
+        loseMatchCount = data.at("LoseCount").asInt();
     }
+    int matchCount = winMatchCount + loseMatchCount;
     
     // 名字 ID 积分赛积分 冲百赛积分 冲百赛胜场
-    char name[100] = {0};
-    memset(name, 0, 100);
-    int icon = 1;
-    int point1 = 0;
-    int point2 = 0;
+    char atlas[100] = {0};
+    memset(atlas, 0, 100);
+    int iconIndex = 1;
+    int normalMatchScore = 0;
+    int hundredMatchScore = 0;
     int point3 = 0;
     int point4 = 0;
     int point5 = 0;
@@ -115,12 +153,12 @@ void MainScene::initMyData()
     if (iter != data.end()) {
         std::string s = data.at("10001").asString();
         CCLOG("v:[%s]", s.c_str());
-        int ret = sscanf(s.c_str(), "%s %d %d %d %d %d %d %d %d %d", name, &icon, &point1, &point2, &point3, &point4, &point5, &point6, &point7, &point8);
+        int ret = sscanf(s.c_str(), "%s %d %d %d %d %d %d %d %d %d", atlas, &iconIndex, &normalMatchScore, &hundredMatchScore, &point3, &point4, &point5, &point6, &point7, &point8);
         if (10 != ret) {
-            sprintf(name, "me");
-            icon = 1;
-            point1 = 0;
-            point2 = 0;
+            sprintf(atlas, "me");
+            iconIndex = 1;
+            normalMatchScore = 0;
+            hundredMatchScore = 0;
             point3 = 0;
             point4 = 0;
             point5 = 0;
@@ -129,17 +167,19 @@ void MainScene::initMyData()
             point8 = 0;
         }
     }
+#endif
+    
     GameTool::addTextBg(this, Size(FULL_WIDTH, 100), Point(0, 0), ANCHOR_LEFT_DOWN, 10);
     int x = 50;
     int y = 30;
     char iconType[20] = {0};
     memset(iconType, 0, 20);
-    sprintf(iconType, "icon_%d.png", icon);
+    sprintf(iconType, "icon_%d.png", iconIndex);
     auto frame = KUtil::addSprite(this, KUtil::getPath(F_FRAME, "frame_icon.png"), Point(x, y), ANCHOR_LEFT_DOWN, 20);
     auto iconSprite = KUtil::addSprite(frame, KUtil::getPath(F_ICON, iconType), Point(61, 72), ANCHOR_CENTER_CENTER, -1);
     iconSprite->setScale(0.95);
     x += 140;
-    GameTool::addLabelOutlineDefault(this, name, 30, Point(x, y), Color4B(0, 0, 0, 255), Color4B(255, 255, 255, 255), 2, ANCHOR_LEFT_DOWN, 20);
+    GameTool::addLabelOutlineDefault(this, atlas, 30, Point(x, y), Color4B(0, 0, 0, 255), Color4B(255, 255, 255, 255), 2, ANCHOR_LEFT_DOWN, 20);
     
     x = FULL_WIDTH - 800;
     GameTool::addLabelOutlineDefault(this, "统计:", 35, Point(x, y), Color4B(200, 150, 200, 255), Color4B(0, 0, 0, 255), 2, ANCHOR_LEFT_DOWN, 20);
@@ -147,11 +187,11 @@ void MainScene::initMyData()
     x += 110;
     char str[500] = {0};
     memset(str, 0, 500);
-    sprintf(str, "%d(胜)/%d(总)", winCount, (winCount+loseCount));
+    sprintf(str, "%d(胜)/%d(总)", winMatchCount, matchCount);
     GameTool::addLabelOutlineDefault(this, str, 35, Point(x, y), Color4B(200, 150, 0, 255), Color4B(0, 0, 0, 255), 2, ANCHOR_LEFT_DOWN, 20);
     
-    point = point1;
-    hundredWinCount = point3;
+    _normalMatchScore = normalMatchScore;
+    _hundredMatchScore = hundredMatchScore;
 }
 
 void MainScene::onEnter()

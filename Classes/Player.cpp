@@ -8,7 +8,7 @@
 
 #include "Player.h"
 
-Player* Player::createPlayer(int pid, int side, std::string name, int icon, bool isAi, int point)
+Player* Player::createPlayer(int pid, std::string name, int icon, bool isAi, int score, int matchWinCount, int matchCount, int side)
 {
     Player *player = new Player();
     player->autorelease();
@@ -17,18 +17,15 @@ Player* Player::createPlayer(int pid, int side, std::string name, int icon, bool
     player->_name = name;
     player->_icon = icon;
     player->_isAi = isAi;
-    player->_point = point;
+    player->_score = score;
+    player->_matchWinCount = matchWinCount;
+    player->_matchCount = matchCount;
     return player;
 }
 
 int Player::getPid()
 {
     return _pid;
-}
-
-int Player::getSide()
-{
-    return _side;
 }
 
 std::string Player::getName()
@@ -56,18 +53,17 @@ Sprite* Player::getSprite()
     return _sprite;
 }
 
-Player::Player():_pokerList(NULL),_side(0),_icon(0),_isAi(0),_pid(0),_point(0)
+Player::Player():_pokerList(NULL),_side(0),_icon(0),_isAi(0),_pid(0),_score(0),_scoreChanged(0),_matchWinCount(0),_matchCount(0)
 {
     _pokerList = new Vector<Poker *>();
-    point1 = 0;
-    point2 = 0;
-    point3 = 0;
-    point4 = 0;
-    point5 = 0;
-    point6 = 0;
-    point7 = 0;
-    point8 = 0;
-    _pointChanged = 0;
+//    point1 = 0;
+//    point2 = 0;
+//    point3 = 0;
+//    point4 = 0;
+//    point5 = 0;
+//    point6 = 0;
+//    point7 = 0;
+//    point8 = 0;
 }
 
 Player::~Player()
@@ -139,42 +135,67 @@ void Player::printPoker()
     }
 }
 
-void Player::setPoint(int point)
+void Player::setScore(int score)
 {
-    _point = point;
+    _score = score;
 }
 
-void Player::addPoint(int point)
+void Player::addScore(int point)
 {
-    _point += point;
-    _pointChanged = point;
+    _score += point;
+    _scoreChanged = point;
 }
 
-int Player::getPoint()
+int Player::getScore()
 {
-    return _point;
+    return _score;
 }
 
-int Player::getPointChanged()
+int Player::getScoreChanged()
 {
-    return _pointChanged;
+    return _scoreChanged;
 }
 
-void Player::setPointVar(int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8)
+//void Player::setPointVar(int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8)
+//{
+//    point1 = p1;
+//    point2 = p2;
+//    point3 = p3;
+//    point4 = p4;
+//    point5 = p5;
+//    point6 = p6;
+//    point7 = p7;
+//    point8 = p8;
+//}
+
+void Player::setSide(int side)
 {
-    point1 = p1;
-    point2 = p2;
-    point3 = p3;
-    point4 = p4;
-    point5 = p5;
-    point6 = p6;
-    point7 = p7;
-    point8 = p8;
+    _side = side;
 }
 
-int Player::getHundredWinCount()
+int Player::getSide()
 {
-    return point3;
+    return _side;
+}
+
+void Player::setMatchWinCount(int matchWinCount)
+{
+    _matchWinCount = matchWinCount;
+}
+
+int Player::getMatchWinCount()
+{
+    return _matchWinCount;
+}
+
+void Player::setMatchCount(int matchCount)
+{
+    _matchCount = matchCount;
+}
+
+int Player::getMatchCount()
+{
+    return _matchCount;
 }
 
 
