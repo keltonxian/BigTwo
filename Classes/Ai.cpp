@@ -272,7 +272,7 @@ int CardList::getCountByFace(int face)
         if (i != face) {
             continue;
         }
-        return list.at(i)->size();
+        return (int)list.at(i)->size();
     }
     return count;
 }

@@ -328,11 +328,11 @@ TableViewCell* MainScene::tableCellAtIndex(TableView *table, ssize_t idx)
     Vector<MenuItem *> itemArray;
     
     auto item = GameTool::addBtn2(&itemArray, "进入", 32, Point(cellWidth/2-100, 40), ANCHOR_CENTER_DOWN, CC_CALLBACK_1(MainScene::callbackRandomMatch, this));
-    item->setTag(idx);
+    item->setTag((int)idx);
     
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC
     item = GameTool::addBtn2(&itemArray, "排行榜", 32, Point(cellWidth/2+100, 40), ANCHOR_CENTER_DOWN, CC_CALLBACK_1(MainScene::callbackRank, this));
-    item->setTag(idx);
+    item->setTag((int)idx);
 #endif
     
     KUtil::addMenu(cell, &itemArray, 30);

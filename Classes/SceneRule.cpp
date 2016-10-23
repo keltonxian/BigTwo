@@ -154,7 +154,7 @@ TableViewCell* SceneRule::tableCellAtIndex(TableView *table, ssize_t idx)
     Vector<MenuItem *> itemArray;
     
     auto item = GameTool::addBtn2(&itemArray, title, 30, Point(cellWidth/2, cellHeight/2), ANCHOR_CENTER_CENTER, CC_CALLBACK_1(SceneRule::callbackBtn, this));
-    item->setTag(idx);
+    item->setTag((int)idx);
     
     KUtil::addMenu(cell, &itemArray, 30);
     return cell;
