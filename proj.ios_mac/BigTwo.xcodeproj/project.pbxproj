@@ -39,6 +39,12 @@
 		D506C6301D55A43B004B0618 /* libcocos2dx iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D506C6191D55A30D004B0618 /* libcocos2dx iOS.a */; };
 		D506C6311D55A43F004B0618 /* libcocos2dx-extensions iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D506C61B1D55A30D004B0618 /* libcocos2dx-extensions iOS.a */; };
 		D506C6321D55A443004B0618 /* libCocosDenshion iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D506C6211D55A30D004B0618 /* libCocosDenshion iOS.a */; };
+		D53426191E1FAC37008C7AA0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53426181E1FAC37008C7AA0 /* CoreMotion.framework */; };
+		D53426221E1FAC5A008C7AA0 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53426211E1FAC5A008C7AA0 /* GameKit.framework */; };
+		D53426241E1FAC72008C7AA0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53426231E1FAC71008C7AA0 /* OpenGLES.framework */; };
+		D53426261E1FAC87008C7AA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53426251E1FAC87008C7AA0 /* UIKit.framework */; };
+		D53426281E1FACF0008C7AA0 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D53426271E1FACF0008C7AA0 /* CoreData.framework */; };
+		D534262A1E1FACFC008C7AA0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D53426291E1FACFC008C7AA0 /* libz.tbd */; };
 		D56E8C411D56EC3200546523 /* font in Resources */ = {isa = PBXBuildFile; fileRef = D56E8C401D56EC3200546523 /* font */; };
 		D56E8C421D56EC3200546523 /* font in Resources */ = {isa = PBXBuildFile; fileRef = D56E8C401D56EC3200546523 /* font */; };
 		D5A55A941D7321C700E8E9B3 /* GameData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5A55A921D7321C700E8E9B3 /* GameData.xcdatamodeld */; };
@@ -50,12 +56,6 @@
 		D5B58A301DA6B6010015903F /* image in Resources */ = {isa = PBXBuildFile; fileRef = D5B58A2E1DA6B6010015903F /* image */; };
 		D5BF50221D60B5ED00A8A848 /* GameTool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5BF50201D60B5ED00A8A848 /* GameTool.cpp */; };
 		D5BF50231D60B5ED00A8A848 /* GameTool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5BF50201D60B5ED00A8A848 /* GameTool.cpp */; };
-		D5E18C281DD84A2400F3D1DA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E18C271DD84A2400F3D1DA /* CoreData.framework */; };
-		D5E18C311DD84A2C00F3D1DA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E18C301DD84A2C00F3D1DA /* libz.tbd */; };
-		D5E18C331DD84A3300F3D1DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E18C321DD84A3300F3D1DA /* UIKit.framework */; };
-		D5E18C351DD84A3900F3D1DA /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E18C341DD84A3900F3D1DA /* OpenGLES.framework */; };
-		D5E18C371DD84A4000F3D1DA /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E18C361DD84A4000F3D1DA /* GameKit.framework */; };
-		D5E18C391DD84A4700F3D1DA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E18C381DD84A4700F3D1DA /* CoreMotion.framework */; };
 		D5ED89CA1D58C4BB004AB3F9 /* KUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ED89C61D58C4BB004AB3F9 /* KUtil.cpp */; };
 		D5ED89CB1D58C4BB004AB3F9 /* KUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5ED89C61D58C4BB004AB3F9 /* KUtil.cpp */; };
 		D5ED89CC1D58C4BB004AB3F9 /* KUtilIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5ED89C91D58C4BB004AB3F9 /* KUtilIOS.mm */; };
@@ -213,6 +213,12 @@
 		D5015FBA1D72B68E002E4BE7 /* IOSTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSTool.h; sourceTree = "<group>"; };
 		D5015FBB1D72B68E002E4BE7 /* IOSTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSTool.m; sourceTree = "<group>"; };
 		D506C5FF1D55A30D004B0618 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../../../build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
+		D53426181E1FAC37008C7AA0 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		D53426211E1FAC5A008C7AA0 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
+		D53426231E1FAC71008C7AA0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		D53426251E1FAC87008C7AA0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		D53426271E1FACF0008C7AA0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		D53426291E1FACFC008C7AA0 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		D56E8C401D56EC3200546523 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
 		D5A55A931D7321C700E8E9B3 /* GameData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameData.xcdatamodel; sourceTree = "<group>"; };
 		D5A55ABC1D73388000E8E9B3 /* CoreDataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHandler.m; sourceTree = "<group>"; };
@@ -222,12 +228,6 @@
 		D5BE5BDF1DBA6D6900AA8C02 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ios/Info.plist; sourceTree = SOURCE_ROOT; };
 		D5BF50201D60B5ED00A8A848 /* GameTool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameTool.cpp; path = ../Classes/GameTool.cpp; sourceTree = "<group>"; };
 		D5BF50211D60B5ED00A8A848 /* GameTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameTool.h; path = ../Classes/GameTool.h; sourceTree = "<group>"; };
-		D5E18C271DD84A2400F3D1DA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
-		D5E18C301DD84A2C00F3D1DA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
-		D5E18C321DD84A3300F3D1DA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		D5E18C341DD84A3900F3D1DA /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
-		D5E18C361DD84A4000F3D1DA /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
-		D5E18C381DD84A4700F3D1DA /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		D5ED89C41D58C4BB004AB3F9 /* KHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHeader.h; sourceTree = "<group>"; };
 		D5ED89C61D58C4BB004AB3F9 /* KUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = KUtil.cpp; sourceTree = "<group>"; };
 		D5ED89C71D58C4BB004AB3F9 /* KUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KUtil.h; sourceTree = "<group>"; };
@@ -253,12 +253,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5E18C391DD84A4700F3D1DA /* CoreMotion.framework in Frameworks */,
-				D5E18C371DD84A4000F3D1DA /* GameKit.framework in Frameworks */,
-				D5E18C351DD84A3900F3D1DA /* OpenGLES.framework in Frameworks */,
-				D5E18C331DD84A3300F3D1DA /* UIKit.framework in Frameworks */,
-				D5E18C311DD84A2C00F3D1DA /* libz.tbd in Frameworks */,
-				D5E18C281DD84A2400F3D1DA /* CoreData.framework in Frameworks */,
+				D534262A1E1FACFC008C7AA0 /* libz.tbd in Frameworks */,
+				D53426281E1FACF0008C7AA0 /* CoreData.framework in Frameworks */,
+				D53426261E1FAC87008C7AA0 /* UIKit.framework in Frameworks */,
+				D53426241E1FAC72008C7AA0 /* OpenGLES.framework in Frameworks */,
+				D53426221E1FAC5A008C7AA0 /* GameKit.framework in Frameworks */,
+				D53426191E1FAC37008C7AA0 /* CoreMotion.framework in Frameworks */,
 				D506C6321D55A443004B0618 /* libCocosDenshion iOS.a in Frameworks */,
 				D506C6311D55A43F004B0618 /* libcocos2dx-extensions iOS.a in Frameworks */,
 				D506C6301D55A43B004B0618 /* libcocos2dx iOS.a in Frameworks */,
@@ -360,12 +360,12 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D5E18C381DD84A4700F3D1DA /* CoreMotion.framework */,
-				D5E18C361DD84A4000F3D1DA /* GameKit.framework */,
-				D5E18C341DD84A3900F3D1DA /* OpenGLES.framework */,
-				D5E18C321DD84A3300F3D1DA /* UIKit.framework */,
-				D5E18C301DD84A2C00F3D1DA /* libz.tbd */,
-				D5E18C271DD84A2400F3D1DA /* CoreData.framework */,
+				D53426291E1FACFC008C7AA0 /* libz.tbd */,
+				D53426271E1FACF0008C7AA0 /* CoreData.framework */,
+				D53426251E1FAC87008C7AA0 /* UIKit.framework */,
+				D53426231E1FAC71008C7AA0 /* OpenGLES.framework */,
+				D53426211E1FAC5A008C7AA0 /* GameKit.framework */,
+				D53426181E1FAC37008C7AA0 /* CoreMotion.framework */,
 				503AE11A17EB9C5A00D1A890 /* IOKit.framework */,
 				503AE11117EB99EE00D1A890 /* libcurl.dylib */,
 				5087E78A17EB975400C73F5D /* OpenGL.framework */,
